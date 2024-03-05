@@ -1,0 +1,22 @@
+----------HEADER----------
+DIPV6          = da79:e6c:577f:4cfc:265e:24cb:32a7:bc93
+DCUSTOMLIST    = sanjiv
+DIPV6          = 51c7:808a:1508:e589:29a2:3136:b0ba:9e92
+DCUSTOMLIST    = nikki
+DIPV6          = 8498:1239:65ee:5986:f941:2754:43d8:3940
+DCUSTOMLIST    = rajiv
+DIPV6          = 1634:a267:66e7:680f:ed7d:3d7e:bb55:672e
+DCUSTOMLIST    = nikki
+DIPV6          = 3093:1b40:b3fc:a9b4:961b:80d:7ed:166e
+DCUSTOMLIST    = sanjiv
+DIPV6          = cea6:a392:aa77:244e:1db:912f:a5a1:aac6
+DCUSTOMLIST    = rajiv
+DIPV6          = 1260:eeea:d793:b2a4:cc2f:d629:229c:5069
+DCUSTOMLIST    = rajiv
+DIPV6          = 6e27:b01f:5111:8ffa:59e6:43b3:4d86:abba
+DCUSTOMLIST    = sanjiv
+DIPV6          = c59c:6af3:fb7d:b02a:ae89:12b5:81e5:c3e
+DCUSTOMLIST    = nikki
+DIPV6          = b55b:1c05:ba87:51d8:269a:ab8d:57de:2b17
+DCUSTOMLIST    = nikki
+----------FOOTER----------
