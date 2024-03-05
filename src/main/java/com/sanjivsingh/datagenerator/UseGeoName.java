@@ -1,6 +1,7 @@
 package com.sanjivsingh.datagenerator;
 
-/*import org.geonames.Toponym;
+/*
+import org.geonames.Toponym;
 import org.geonames.ToponymSearchCriteria;
 import org.geonames.ToponymSearchResult;
 import org.geonames.WebService;

@@ -17,7 +17,7 @@ public class QUtil {
 		o.writeObject(obj);
 		return b.toByteArray();
 	}
-
+	
 	public static Object convert2Object(byte[] bytes) throws IOException,
 			ClassNotFoundException {
 		ByteArrayInputStream b = new ByteArrayInputStream(bytes);

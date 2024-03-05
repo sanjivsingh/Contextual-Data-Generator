@@ -8,11 +8,17 @@ import com.sanjivsingh.datagenerator.core.datatype.persist.ConnectorTypes;
 import com.sanjivsingh.datagenerator.core.util.DataUtil;
 
 /**
+ * The Class ContextualDataGenerator.
+ *
  * @author Sanjiv.Singh
- * 
  */
 public class ContextualDataGenerator {
 
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
 	public static void main(String[] args) {
 
 		System.out.println("------------Handling request : ");

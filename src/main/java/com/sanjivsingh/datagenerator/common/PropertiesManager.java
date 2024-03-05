@@ -17,13 +17,26 @@ import com.sanjivsingh.datagenerator.exception.DataGenRuntimeException;
  */
 public class PropertiesManager {
 
+	/** The properties. */
 	private Properties properties;
 
+	/** The config properties. */
 	private static PropertiesManager configProperties;
+	
+	/** The system properties. */
 	private static PropertiesManager systemProperties;
+	
+	/** The message properties. */
 	private static PropertiesManager messageProperties;
+	
+	/** The data type classes properties. */
 	private static PropertiesManager dataTypeClassesProperties;
 
+	/**
+	 * Instantiates a new properties manager.
+	 *
+	 * @param propertyFileName the property file name
+	 */
 	private PropertiesManager(String propertyFileName) {
 		try {
 			properties = new Properties();
@@ -35,6 +48,11 @@ public class PropertiesManager {
 		}
 	}
 
+	/**
+	 * Instantiates a new properties manager.
+	 *
+	 * @param in the in
+	 */
 	private PropertiesManager(InputStream in) {
 		try {
 			properties = new Properties();
@@ -47,8 +65,8 @@ public class PropertiesManager {
 
 	/**
 	 * Returns the system configs.
-	 * 
-	 * @return
+	 *
+	 * @return the configurations
 	 */
 	public static PropertiesManager getConfigurations() {
 		if (configProperties != null) {
@@ -74,8 +92,8 @@ public class PropertiesManager {
 
 	/**
 	 * Returns the system properties (programmer specific properties).
-	 * 
-	 * @return
+	 *
+	 * @return the system properties
 	 */
 	public static PropertiesManager getSystemProperties() {
 		if (systemProperties != null) {
@@ -88,14 +106,19 @@ public class PropertiesManager {
 
 	/**
 	 * Returns config/property-value for a particular key.
-	 * 
-	 * @param key
-	 * @return
+	 *
+	 * @param key the key
+	 * @return the value
 	 */
 	public String getValue(String key) {
 		return properties.getProperty(key);
 	}
 
+	/**
+	 * Gets the message properties.
+	 *
+	 * @return the message properties
+	 */
 	public static PropertiesManager getMessageProperties() {
 		if (messageProperties != null) {
 			return messageProperties;
@@ -112,6 +135,11 @@ public class PropertiesManager {
 		}
 	}
 
+	/**
+	 * Gets the data type classes properties.
+	 *
+	 * @return the data type classes properties
+	 */
 	public static PropertiesManager getDataTypeClassesProperties() {
 		if (dataTypeClassesProperties != null) {
 			return dataTypeClassesProperties;

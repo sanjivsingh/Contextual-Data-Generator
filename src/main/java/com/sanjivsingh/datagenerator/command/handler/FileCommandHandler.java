@@ -14,11 +14,17 @@ import com.sanjivsingh.datagenerator.core.datatype.persist.impl.GenericPersistan
 import com.sanjivsingh.datagenerator.core.engine.ContextualDataGeneratorEngine;
 
 /**
+ * The Class FileCommandHandler.
+ *
  * @author Sanjiv.Singh
- * 
  */
 public class FileCommandHandler extends CommandHandleTemplate {
 
+	/**
+	 * Generate.
+	 *
+	 * @param argsMap the args map
+	 */
 	@Override
 	public void generate(Map<String, String> argsMap) {
 

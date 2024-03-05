@@ -16,6 +16,6 @@ public class BaseConnectorInput<K, V> {
 
 	public void setInput(HashMap<K, V> input) {
 		this.input = input;
-	}
+	}	
 
 }

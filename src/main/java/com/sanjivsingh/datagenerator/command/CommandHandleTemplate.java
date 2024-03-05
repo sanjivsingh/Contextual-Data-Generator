@@ -4,11 +4,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * The Class CommandHandleTemplate.
+ *
  * @author Sanjiv.Singh
- * 
  */
 public abstract class CommandHandleTemplate implements CommandHandler {
 
+	/**
+	 * Handle command.
+	 *
+	 * @param args the args
+	 */
 	@Override
 	public void handleCommand(String[] args) {
 
@@ -25,6 +31,11 @@ public abstract class CommandHandleTemplate implements CommandHandler {
 
 	}
 
+	/**
+	 * Generate.
+	 *
+	 * @param argsMap the args map
+	 */
 	public abstract void generate(Map<String, String> argsMap);
 
 }

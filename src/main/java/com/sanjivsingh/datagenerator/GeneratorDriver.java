@@ -18,16 +18,15 @@ import com.sanjivsingh.datagenerator.core.datatype.persist.impl.ListPersistanceC
 import com.sanjivsingh.datagenerator.core.datatype.persist.impl.RDBMSPersistanceConnector;
 import com.sanjivsingh.datagenerator.core.engine.ContextualDataGeneratorEngine;
 
-public class UseMe {
+public class GeneratorDriver {
 
 	public static void main(String[] args) {
 
-		final String inputDir = "/home/impadmin/BDDG/input/";
-		final String outputDir = "/home/impadmin/BDDG/output/";
+		final String inputDir = "/home/sanjivsingh/BDDG/input/";
+		final String outputDir = "/home/sanjivsingh/BDDG/output/";
 
 		// create big data generator instance
-		ContextualDataGeneratorEngine bdGenerator = new ContextualDataGeneratorEngine(
-				inputDir);
+		ContextualDataGeneratorEngine bdGenerator = new ContextualDataGeneratorEngine(inputDir);
 		int numberOfRecords = 10000;
 
 		// generate data : format 1
@@ -64,14 +63,12 @@ public class UseMe {
 		}
 	}
 
-	private static void cassandraExample(ContextualDataGeneratorEngine bdGenerator,
-			int numberOfRecords) {
+	private static void cassandraExample(ContextualDataGeneratorEngine bdGenerator, int numberOfRecords) {
 		PersistanceConnectorFactory pcf = new PersistanceConnectorFactory();
 		Map<String, String> conProperties = new HashMap<String, String>();
 		conProperties.put(ConnectorConstants.CASSANDRA_HOST, "localhost");
 		conProperties.put(ConnectorConstants.CASSANDRA_PORT, "9160");
-		conProperties.put(ConnectorConstants.CASSANDRA_KEYSPACE,
-				"KunderaExamples");
+		conProperties.put(ConnectorConstants.CASSANDRA_KEYSPACE, "KunderaExamples");
 		conProperties.put(ConnectorConstants.CASSANDRA_COLUMNFAMILY, "users");
 		pcf.load(ConnectorTypes.CASSANDRA, conProperties);
 
@@ -83,14 +80,10 @@ public class UseMe {
 				String aparams[] = inputRecord.replaceAll("\n", "").split(",");
 				ParserModel parserModel = new ParserModel();
 				if (aparams.length == 4) {
-					parserModel.getMap().put("userId",
-							new TypeTypeValue("Id", "String", aparams[0]));
-					parserModel.getMap().put("first_name",
-							new TypeTypeValue("Column", "String", aparams[1]));
-					parserModel.getMap().put("last_name",
-							new TypeTypeValue("Column", "String", aparams[2]));
-					parserModel.getMap().put("city",
-							new TypeTypeValue("Column", "String", aparams[3]));
+					parserModel.getMap().put("userId", new TypeTypeValue("Id", "String", aparams[0]));
+					parserModel.getMap().put("first_name", new TypeTypeValue("Column", "String", aparams[1]));
+					parserModel.getMap().put("last_name", new TypeTypeValue("Column", "String", aparams[2]));
+					parserModel.getMap().put("city", new TypeTypeValue("Column", "String", aparams[3]));
 				}
 				return parserModel;
 			}
@@ -99,16 +92,14 @@ public class UseMe {
 		bdGenerator.generateData(numberOfRecords, cassandraConnectorInstance);
 	}
 
-	private static void rdbmsExample(ContextualDataGeneratorEngine bdGenerator,
-			int numberOfRecords) {
+	private static void rdbmsExample(ContextualDataGeneratorEngine bdGenerator, int numberOfRecords) {
 
 		String serverIP = "192.168.145.53";
 		int port = 3009;
 		String dataBaseName = "myDataBase";
 		String tableName = "myTable";
 
-		RDBMSPersistanceConnector foc = new RDBMSPersistanceConnector(serverIP,
-				port, dataBaseName, tableName);
+		RDBMSPersistanceConnector foc = new RDBMSPersistanceConnector(serverIP, port, dataBaseName, tableName);
 
 		RecordParser recordParser = new RecordParser() {
 			@Override
@@ -117,14 +108,10 @@ public class UseMe {
 				ParserModel parserModel = new ParserModel();
 				if (aparams.length == 4) {
 
-					parserModel.getMap().put("userId",
-							new TypeTypeValue("Id", "String", aparams[0]));
-					parserModel.getMap().put("first_name",
-							new TypeTypeValue("Column", "String", aparams[0]));
-					parserModel.getMap().put("last_name",
-							new TypeTypeValue("Column", "String", aparams[0]));
-					parserModel.getMap().put("city",
-							new TypeTypeValue("Column", "String", aparams[0]));
+					parserModel.getMap().put("userId", new TypeTypeValue("Id", "String", aparams[0]));
+					parserModel.getMap().put("first_name", new TypeTypeValue("Column", "String", aparams[0]));
+					parserModel.getMap().put("last_name", new TypeTypeValue("Column", "String", aparams[0]));
+					parserModel.getMap().put("city", new TypeTypeValue("Column", "String", aparams[0]));
 				}
 				return parserModel;
 			}
@@ -133,21 +120,19 @@ public class UseMe {
 		bdGenerator.generateData(numberOfRecords, foc);
 	}
 
-	private static void fileExample(final String outputDir,
-			ContextualDataGeneratorEngine bdGenerator, int numberOfRecords) {
+	private static void fileExample(final String outputDir, ContextualDataGeneratorEngine bdGenerator,
+			int numberOfRecords) {
 
 		String seperator = "";
 
 		PersistanceConnectorFactory pcf = new PersistanceConnectorFactory();
 		Map<String, String> conProperties = new HashMap<String, String>();
-		conProperties.put(ConnectorConstants.FILE_INPUT_DIR,
-				bdGenerator.getInputDir());
+		conProperties.put(ConnectorConstants.FILE_INPUT_DIR, bdGenerator.getInputDir());
 		conProperties.put(ConnectorConstants.FILE_OUTPUT_DIR, outputDir);
 		conProperties.put(ConnectorConstants.FILE_SEPERATOR, seperator);
 		pcf.load(ConnectorTypes.FILE, conProperties);
 
-		GenericPersistanceConnector fileConnectorInstance = pcf
-				.getConnectorInstance();
+		GenericPersistanceConnector fileConnectorInstance = pcf.getConnectorInstance();
 		bdGenerator.generateData(numberOfRecords, fileConnectorInstance);
 
 		// print generated file
@@ -162,14 +147,12 @@ public class UseMe {
 		}
 	}
 
-	private static void listExample(ContextualDataGeneratorEngine bdGenerator,
-			int numberOfRecords) {
+	private static void listExample(ContextualDataGeneratorEngine bdGenerator, int numberOfRecords) {
 		PersistanceConnectorFactory pcf = new PersistanceConnectorFactory();
 		Map<String, String> conProperties = null;
 
 		pcf.load(ConnectorTypes.LIST, conProperties);
-		ListPersistanceConnector listConnectorInstance = (ListPersistanceConnector) pcf
-				.getConnectorInstance();
+		ListPersistanceConnector listConnectorInstance = (ListPersistanceConnector) pcf.getConnectorInstance();
 
 		bdGenerator.generateData(numberOfRecords, listConnectorInstance);
 		if (null != listConnectorInstance.getRecords()) {
@@ -180,8 +163,7 @@ public class UseMe {
 		}
 	}
 
-	private static void rabbitmqExample(ContextualDataGeneratorEngine bdGenerator,
-			int numberOfRecords) {
+	private static void rabbitmqExample(ContextualDataGeneratorEngine bdGenerator, int numberOfRecords) {
 
 		PersistanceConnectorFactory pcf = new PersistanceConnectorFactory();
 		Map<String, String> conProperties = new HashMap<String, String>();
@@ -190,8 +172,7 @@ public class UseMe {
 		conProperties.put(ConnectorConstants.RABBITMQ_QUEUE, "myQueue");
 		pcf.load(ConnectorTypes.RABBITMQ, conProperties);
 
-		GenericPersistanceConnector rabbitConnectorInstance = pcf
-				.getConnectorInstance();
+		GenericPersistanceConnector rabbitConnectorInstance = pcf.getConnectorInstance();
 
 		bdGenerator.generateData(numberOfRecords, rabbitConnectorInstance);
 	}
