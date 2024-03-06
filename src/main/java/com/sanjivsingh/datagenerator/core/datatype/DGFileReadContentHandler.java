@@ -6,11 +6,18 @@ import java.io.IOException;
 import com.sanjivsingh.datagenerator.exception.DataGenFileReadExceptionTemplate;
 
 /**
+ * The Class DGFileReadContentHandler.
+ *
  * @author Sanjiv.Singh
- * 
  */
 public class DGFileReadContentHandler extends DataGenFileReadExceptionTemplate {
 
+	/**
+	 * Read process.
+	 *
+	 * @param reader the reader
+	 * @return the string
+	 */
 	@Override
 	public String readProcess(BufferedReader reader) {
 		String line = null;

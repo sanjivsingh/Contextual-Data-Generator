@@ -5,24 +5,85 @@ import java.util.Iterator;
 import java.util.Map;
 
 /**
+ * The Enum DataTypes.
+ *
  * @author Sanjiv.Singh
- * 
  */
 public enum DataTypes {
 
-	DATE(1, "DATE", "DATE datatype"), BIGNUMBER(2, "BIGNUMBER",
-			"BIGNUMBER datatype"), ALPHANUMERIC(3, "ALPHANUMERIC", ""), BOOLEAN(
-			4, "BOOLEAN", ""), COLOR(5, "COLOR", ""), COMPANY(6, "COMPANY", ""), COUNTRY(
-			7, "COUNTRY", ""), COUNTRYCODE(8, "COUNTRYCODE", ""), CURRENCY(9,
-			"CURRENCY", ""), CURRENCYCODE(10, "CURRENCYCODE", ""), FREQUENCY(
-			11, "FREQUENCY", ""), GENDER(12, "GENDER", ""), GUID(13, "GUID", ""), HEXCOLOR(
-			14, "HEXCOLOR", ""), DIPV4(15, "DIPV4", ""), DIPV6(16, "DIPV6", ""), LATITUDE(
-			17, "LATITUDE", ""), LONGITUDE(18, "LONGITUDE", ""), MACADDRESS(19,
-			"MACADDRESS", ""), ROWNUMBER(20, "ROWNUMBER", ""), TIME(21, "TIME",
-			""), TIMEZONE(22, "TIMEZONE", ""), TITLE(23, "TITLE", ""), MONEY(
-			24, "MONEY", ""), REGULAREXPRESSION(25, "REGULAREXPRESSION", ""), CUSTOMLIST(
-			26, "CUSTOMLIST", ""), TOPDOMAINNAME(27, "TOPDOMAINNAME", ""), DOMAINNAME(
-			28, "DOMAINNAME", ""), EMAIL(29, "EMAIL", ""), URL(30, "URL", ""), INDEX(
+	/** The date. */
+	DATE(1, "DATE", "DATE datatype"), /** The bignumber. */
+ BIGNUMBER(2, "BIGNUMBER",
+			"BIGNUMBER datatype"), 
+ /** The alphanumeric. */
+ ALPHANUMERIC(3, "ALPHANUMERIC", ""), 
+ /** The boolean. */
+ BOOLEAN(
+			4, "BOOLEAN", ""), 
+ /** The color. */
+ COLOR(5, "COLOR", ""), 
+ /** The company. */
+ COMPANY(6, "COMPANY", ""), 
+ /** The country. */
+ COUNTRY(
+			7, "COUNTRY", ""), 
+ /** The countrycode. */
+ COUNTRYCODE(8, "COUNTRYCODE", ""), 
+ /** The currency. */
+ CURRENCY(9,
+			"CURRENCY", ""), 
+ /** The currencycode. */
+ CURRENCYCODE(10, "CURRENCYCODE", ""), 
+ /** The frequency. */
+ FREQUENCY(
+			11, "FREQUENCY", ""), 
+ /** The gender. */
+ GENDER(12, "GENDER", ""), 
+ /** The guid. */
+ GUID(13, "GUID", ""), 
+ /** The hexcolor. */
+ HEXCOLOR(
+			14, "HEXCOLOR", ""), 
+ /** The dipv4. */
+ DIPV4(15, "DIPV4", ""), 
+ /** The dipv6. */
+ DIPV6(16, "DIPV6", ""), 
+ /** The latitude. */
+ LATITUDE(
+			17, "LATITUDE", ""), 
+ /** The longitude. */
+ LONGITUDE(18, "LONGITUDE", ""), 
+ /** The macaddress. */
+ MACADDRESS(19,
+			"MACADDRESS", ""), 
+ /** The rownumber. */
+ ROWNUMBER(20, "ROWNUMBER", ""), 
+ /** The time. */
+ TIME(21, "TIME",
+			""), 
+ /** The timezone. */
+ TIMEZONE(22, "TIMEZONE", ""), 
+ /** The title. */
+ TITLE(23, "TITLE", ""), 
+ /** The money. */
+ MONEY(
+			24, "MONEY", ""), 
+ /** The regularexpression. */
+ REGULAREXPRESSION(25, "REGULAREXPRESSION", ""), 
+ /** The customlist. */
+ CUSTOMLIST(
+			26, "CUSTOMLIST", ""), 
+ /** The topdomainname. */
+ TOPDOMAINNAME(27, "TOPDOMAINNAME", ""), 
+ /** The domainname. */
+ DOMAINNAME(
+			28, "DOMAINNAME", ""), 
+ /** The email. */
+ EMAIL(29, "EMAIL", ""), 
+ /** The url. */
+ URL(30, "URL", ""), 
+ /** The index. */
+ INDEX(
 			31, "INDEX", "");
 
 	/** The code. */
@@ -39,9 +100,10 @@ public enum DataTypes {
 
 	/**
 	 * Instantiates a new DataType.
-	 * 
-	 * @param c
-	 *            the c
+	 *
+	 * @param c            the c
+	 * @param label the label
+	 * @param description the description
 	 */
 	private DataTypes(Integer c, String label, String description) {
 		this.code = c;
@@ -95,6 +157,8 @@ public enum DataTypes {
 	}
 
 	/**
+	 * Gets the code.
+	 *
 	 * @return the code
 	 */
 	public Integer getCode() {
@@ -102,6 +166,8 @@ public enum DataTypes {
 	}
 
 	/**
+	 * Gets the label.
+	 *
 	 * @return the label
 	 */
 	public String getLabel() {
@@ -109,12 +175,19 @@ public enum DataTypes {
 	}
 
 	/**
+	 * Gets the description.
+	 *
 	 * @return the description
 	 */
 	public String getDescription() {
 		return description;
 	}
 
+	/**
+	 * To string.
+	 *
+	 * @return the string
+	 */
 	/*
 	 * (non-Javadoc)
 	 * 

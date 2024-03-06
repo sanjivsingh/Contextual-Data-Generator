@@ -19,22 +19,41 @@ import com.sanjivsingh.datagenerator.core.util.DataUtil;
 import com.sanjivsingh.datagenerator.exception.DataGenException;
 
 /**
+ * The Class DataGeneratorHandler.
+ *
  * @author Sanjiv.Singh
- * 
  */
 public class DataGeneratorHandler {
 
+	/** The sym bol index. */
 	private int symBolIndex = Symbals.MAX_SYMBOL_INDEX + 1;
+	
+	/** The input expression. */
 	private String inputExpression;
+	
+	/** The expression. */
 	private String expression;
+	
+	/** The generator context. */
 	private GeneratorContext generatorContext = new GeneratorContext();
 
+	/**
+	 * Instantiates a new data generator handler.
+	 *
+	 * @param uniqueID the unique ID
+	 * @param inputExpression the input expression
+	 */
 	public DataGeneratorHandler(String uniqueID, String inputExpression) {
 		generatorContext.setUniqueID(uniqueID);
 		this.inputExpression = inputExpression;
 		this.expression = inputExpression;
 	}
 
+	/**
+	 * Gets the formated expression.
+	 *
+	 * @return the formated expression
+	 */
 	public String getFormatedExpression() {
 		expression = DataUtil.formatRegex(expression);
 		// TODO replace DATA_TYPE place holders with symbols
@@ -51,6 +70,11 @@ public class DataGeneratorHandler {
 		return expression;
 	}
 
+	/**
+	 * Generate iteration tree.
+	 *
+	 * @return the i scope
+	 */
 	private IScope generateIterationTree() {
 
 		// System.out.println(expression);
@@ -63,6 +87,13 @@ public class DataGeneratorHandler {
 		return node;
 	}
 
+	/**
+	 * Parses the it.
+	 *
+	 * @param start the start
+	 * @param end the end
+	 * @param node the node
+	 */
 	private void parseIt(int start, int end, IScope node) {
 
 		if (start >= 0 && start >= end) {
@@ -93,12 +124,25 @@ public class DataGeneratorHandler {
 		}
 	}
 
+	/**
+	 * Int value.
+	 *
+	 * @param index the index
+	 * @return the int
+	 */
 	private int intValue(int index) {
 		char chatAt = expression.charAt(index);
 		int value = (int) chatAt;
 		return value;
 	}
 
+	/**
+	 * Find left index.
+	 *
+	 * @param start the start
+	 * @param end the end
+	 * @return the int
+	 */
 	private int findLeftIndex(int start, int end) {
 		int depth = 1;
 		for (int i = start - 1; i >= end; i--) {
@@ -115,6 +159,13 @@ public class DataGeneratorHandler {
 		return end;
 	}
 
+	/**
+	 * Creates the child.
+	 *
+	 * @param current the current
+	 * @param chatAt the chat at
+	 * @return the i scope
+	 */
 	private IScope createChild(IScope current, char chatAt) {
 		IScope child = new IScope();
 		child.symbol = chatAt;
@@ -123,6 +174,12 @@ public class DataGeneratorHandler {
 		return child;
 	}
 
+	/**
+	 * Checks if is star plus.
+	 *
+	 * @param index the index
+	 * @return true, if is star plus
+	 */
 	private boolean isStarPlus(int index) {
 		if (index >= 0 && index < expression.length()) {
 			char chatAt = expression.charAt(index);
@@ -131,6 +188,13 @@ public class DataGeneratorHandler {
 		return false;
 	}
 
+	/**
+	 * Sample generated data.
+	 *
+	 * @param recordIndex the record index
+	 * @param str the str
+	 * @return the string
+	 */
 	public String sampleGeneratedData(int recordIndex, String str) {
 
 		// TODO replace symbols with random generated data
@@ -159,6 +223,12 @@ public class DataGeneratorHandler {
 		return str;
 	}
 
+	/**
+	 * Have id.
+	 *
+	 * @param index the index
+	 * @return true, if successful
+	 */
 	private boolean haveId(Integer index) {
 		String dataTypeExpression = generatorContext.getExpression(index);
 
@@ -170,12 +240,23 @@ public class DataGeneratorHandler {
 		}
 	}
 
+	/**
+	 * Refresh context for new record.
+	 */
 	private void refreshContextForNewRecord() {
 		for (int index : generatorContext.getIndexs()) {
 			generatorContext.addValue(index, null);
 		}
 	}
 
+	/**
+	 * Replace all.
+	 *
+	 * @param str the str
+	 * @param find the find
+	 * @param replace the replace
+	 * @return the string
+	 */
 	private String replaceAll(String str, String find, String replace) {
 
 		while (str.contains(find)) {
@@ -186,6 +267,14 @@ public class DataGeneratorHandler {
 		return str;
 	}
 
+	/**
+	 * Replace first.
+	 *
+	 * @param str the str
+	 * @param find the find
+	 * @param replace the replace
+	 * @return the string
+	 */
 	private String replaceFirst(String str, String find, String replace) {
 
 		if (str.contains(find)) {
@@ -196,6 +285,13 @@ public class DataGeneratorHandler {
 		return str;
 	}
 
+	/**
+	 * Gets the random data for date type.
+	 *
+	 * @param recordIndex the record index
+	 * @param charIndex the char index
+	 * @return the random data for date type
+	 */
 	private String getRandomDataForDateType(int recordIndex, int charIndex) {
 
 		String dataTypeExpression = generatorContext.getExpression(charIndex);
@@ -213,6 +309,12 @@ public class DataGeneratorHandler {
 		}
 	}
 
+	/**
+	 * Gets the random value fromby id.
+	 *
+	 * @param id the id
+	 * @return the random value fromby id
+	 */
 	private String getRandomValueFrombyId(String id) {
 		ArrayList<ExpressssionValue> expresssionsById = generatorContext
 				.getExpresssionById(id);
@@ -224,6 +326,13 @@ public class DataGeneratorHandler {
 		return null;
 	}
 
+	/**
+	 * Gets the random value through data type.
+	 *
+	 * @param recordIndex the record index
+	 * @param charIndex the char index
+	 * @return the random value through data type
+	 */
 	private String getRandomValueThroughDataType(int recordIndex, int charIndex) {
 		DataType dataType;
 		try {
@@ -247,6 +356,11 @@ public class DataGeneratorHandler {
 		}
 	}
 
+	/**
+	 * Format.
+	 *
+	 * @return the string
+	 */
 	private String format() {
 
 		int index = 0;
@@ -332,6 +446,12 @@ public class DataGeneratorHandler {
 		return expression;
 	}
 
+	/**
+	 * Update cache for operation iteration.
+	 *
+	 * @param charIndex the char index
+	 * @param range the range
+	 */
 	private void updateCacheForOperationIteration(int charIndex, String range) {
 		HashMap<Integer, BaseConnectorInput<String, Object>> hashMap = GeneratorCache
 				.getInstance().getMap().get(generatorContext.getUniqueID());
@@ -378,10 +498,20 @@ public class DataGeneratorHandler {
 		}
 	}
 
+	/**
+	 * Gets the generator context.
+	 *
+	 * @return the generator context
+	 */
 	public GeneratorContext getGeneratorContext() {
 		return generatorContext;
 	}
 
+	/**
+	 * Sets the generator context.
+	 *
+	 * @param generatorContext the new generator context
+	 */
 	public void setGeneratorContext(GeneratorContext generatorContext) {
 		this.generatorContext = generatorContext;
 	}

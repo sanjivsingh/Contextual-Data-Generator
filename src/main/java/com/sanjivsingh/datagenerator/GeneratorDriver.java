@@ -18,8 +18,16 @@ import com.sanjivsingh.datagenerator.core.datatype.persist.impl.ListPersistanceC
 import com.sanjivsingh.datagenerator.core.datatype.persist.impl.RDBMSPersistanceConnector;
 import com.sanjivsingh.datagenerator.core.engine.ContextualDataGeneratorEngine;
 
+/**
+ * The Class GeneratorDriver.
+ */
 public class GeneratorDriver {
 
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
 	public static void main(String[] args) {
 
 		final String inputDir = "/home/sanjivsingh/BDDG/input/";
@@ -63,6 +71,12 @@ public class GeneratorDriver {
 		}
 	}
 
+	/**
+	 * Cassandra example.
+	 *
+	 * @param bdGenerator the bd generator
+	 * @param numberOfRecords the number of records
+	 */
 	private static void cassandraExample(ContextualDataGeneratorEngine bdGenerator, int numberOfRecords) {
 		PersistanceConnectorFactory pcf = new PersistanceConnectorFactory();
 		Map<String, String> conProperties = new HashMap<String, String>();
@@ -92,6 +106,12 @@ public class GeneratorDriver {
 		bdGenerator.generateData(numberOfRecords, cassandraConnectorInstance);
 	}
 
+	/**
+	 * Rdbms example.
+	 *
+	 * @param bdGenerator the bd generator
+	 * @param numberOfRecords the number of records
+	 */
 	private static void rdbmsExample(ContextualDataGeneratorEngine bdGenerator, int numberOfRecords) {
 
 		String serverIP = "192.168.145.53";
@@ -120,6 +140,13 @@ public class GeneratorDriver {
 		bdGenerator.generateData(numberOfRecords, foc);
 	}
 
+	/**
+	 * File example.
+	 *
+	 * @param outputDir the output dir
+	 * @param bdGenerator the bd generator
+	 * @param numberOfRecords the number of records
+	 */
 	private static void fileExample(final String outputDir, ContextualDataGeneratorEngine bdGenerator,
 			int numberOfRecords) {
 
@@ -147,6 +174,12 @@ public class GeneratorDriver {
 		}
 	}
 
+	/**
+	 * List example.
+	 *
+	 * @param bdGenerator the bd generator
+	 * @param numberOfRecords the number of records
+	 */
 	private static void listExample(ContextualDataGeneratorEngine bdGenerator, int numberOfRecords) {
 		PersistanceConnectorFactory pcf = new PersistanceConnectorFactory();
 		Map<String, String> conProperties = null;
@@ -163,6 +196,12 @@ public class GeneratorDriver {
 		}
 	}
 
+	/**
+	 * Rabbitmq example.
+	 *
+	 * @param bdGenerator the bd generator
+	 * @param numberOfRecords the number of records
+	 */
 	private static void rabbitmqExample(ContextualDataGeneratorEngine bdGenerator, int numberOfRecords) {
 
 		PersistanceConnectorFactory pcf = new PersistanceConnectorFactory();

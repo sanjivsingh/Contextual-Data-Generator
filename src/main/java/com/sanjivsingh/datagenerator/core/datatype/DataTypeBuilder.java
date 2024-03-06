@@ -10,11 +10,20 @@ import com.sanjivsingh.datagenerator.core.util.DataUtil;
 import com.sanjivsingh.datagenerator.exception.DataGenException;
 
 /**
+ * The Class DataTypeBuilder.
+ *
  * @author Sanjiv.Singh
- * 
  */
 public class DataTypeBuilder {
 
+	/**
+	 * Gets the data type.
+	 *
+	 * @param charIndex the char index
+	 * @param recordIndex the record index
+	 * @param generatorContext the generator context
+	 * @return the data type
+	 */
 	public DataType getDataType(int charIndex, int recordIndex,
 			GeneratorContext generatorContext) {
 
@@ -34,6 +43,14 @@ public class DataTypeBuilder {
 		return dataType;
 	}
 
+	/**
+	 * Prepare data type.
+	 *
+	 * @param charIndex the char index
+	 * @param recordIndex the record index
+	 * @param generatorContext the generator context
+	 * @return the data type
+	 */
 	private DataType prepareDataType(int charIndex, int recordIndex,
 			GeneratorContext generatorContext) {
 		String dataTypeExpression = generatorContext.getExpression(charIndex);

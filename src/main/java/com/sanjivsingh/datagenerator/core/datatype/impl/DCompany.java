@@ -1,7 +1,5 @@
 package com.sanjivsingh.datagenerator.core.datatype.impl;
 
-import net._01001111.text.LoremIpsum;
-
 import org.apache.commons.lang3.text.WordUtils;
 
 import com.sanjivsingh.datagenerator.core.datatype.BaseDataType;
@@ -9,18 +7,34 @@ import com.sanjivsingh.datagenerator.core.datatype.DataType;
 import com.sanjivsingh.datagenerator.core.model.GeneratorContext;
 import com.sanjivsingh.datagenerator.core.util.RandomUtil;
 
+import net._01001111.text.LoremIpsum;
+
+/**
+ * The Class DCompany.
+ */
 public class DCompany extends BaseDataType {
 
-	private DCompany(int charIndex, int recordIndex,
-			GeneratorContext generatorContext) {
+	/**
+	 * Instantiates a new d company.
+	 *
+	 * @param charIndex        the char index
+	 * @param recordIndex      the record index
+	 * @param generatorContext the generator context
+	 */
+	private DCompany(int charIndex, int recordIndex, GeneratorContext generatorContext) {
 		super(charIndex, recordIndex, generatorContext);
 		// TODO Auto-generated constructor stub
 	}
 
-	String[] suffixs = { "Ltd", "Industries", "Inc.", "Corporation",
-			"Incorporated", "Foundation", "Institute", "Consulting", "Inc.",
-			"LLP", "LLC", "Corp.", "Limited", "Company", "Associates", "PC" };
+	/** The suffixs. */
+	String[] suffixs = { "Ltd", "Industries", "Inc.", "Corporation", "Incorporated", "Foundation", "Institute",
+			"Consulting", "Inc.", "LLP", "LLC", "Corp.", "Limited", "Company", "Associates", "PC" };
 
+	/**
+	 * Gets the random value.
+	 *
+	 * @return the random value
+	 */
 	@Override
 	public String getRandomValue() {
 
@@ -34,8 +48,15 @@ public class DCompany extends BaseDataType {
 		return WordUtils.capitalizeFully(sb.toString());
 	}
 
-	public static DataType getInstance(Integer charIndex, Integer recordIndex,
-			GeneratorContext generatorContext) {
+	/**
+	 * Gets the single instance of DCompany.
+	 *
+	 * @param charIndex        the char index
+	 * @param recordIndex      the record index
+	 * @param generatorContext the generator context
+	 * @return single instance of DCompany
+	 */
+	public static DataType getInstance(Integer charIndex, Integer recordIndex, GeneratorContext generatorContext) {
 		DCompany dc = new DCompany(charIndex, recordIndex, generatorContext);
 		return dc;
 	}
